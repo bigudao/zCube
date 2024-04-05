@@ -16,63 +16,63 @@ pub mod bigu_zcube {
   
         let user_profile = &mut ctx.accounts.user_profile;
         user_profile.authority = ctx.accounts.authority.key();
-        user_profile.last_airbnb = 0;
-        user_profile.airbnb_count = 0;
+        user_profile.last_zCube = 0;
+        user_profile.zCube_count = 0;
 
         Ok(())
     }
 
-    pub fn add_airbnb(
+    pub fn add_zCube(
         ctx: Context<Addzcube>, 
         location: String, 
         country: String, 
         price: String,
         img: String,
     ) -> Result<()> {
-        let airbnb_account = &mut ctx.accounts.zcube_account;
+        let zCube_account = &mut ctx.accounts.zcube_account;
         let user_profile = &mut ctx.accounts.user_profile;
 
         // Fill contents with argument
-        airbnb_account.authority = ctx.accounts.authority.key();
-        airbnb_account.idx = user_profile.last_airbnb;
-        airbnb_account.location = location;
-        airbnb_account.country = country;
-        airbnb_account.price = price;
-        airbnb_account.image = img;
-        airbnb_account.isReserved = false;
+        zcube_account.authority = ctx.accounts.authority.key();
+        zcube_account.idx = user_profile.last_airbnb;
+        zcube_account.location = location;
+        zcube_account.country = country;
+        zcube_account.price = price;
+        zcube_account.image = img;
+        zcube_account.isReserved = false;
 
         // Increase airbnb idx for PDA
-        user_profile.last_airbnb = user_profile.last_zcube
+        user_profile.last_zcube = user_profile.last_zcube
             .checked_add(1)
             .unwrap();
 
         // Increase total airbnb count
-        user_profile.airbnb_count = user_profile.zcube_count
+        user_profile.zcube_count = user_profile.zcube_count
             .checked_add(1)
             .unwrap();
 
         Ok(())
     }
 
-    pub fn update_airbnb(
-        ctx: Context<UpdateAirbnb>, 
+    pub fn update_zcube(
+        ctx: Context<Updatezcube>, 
         airbnb_idx: u8,
         location: String, 
         country: String, 
         price: String,
         img: String,
     ) -> Result<()> {
-        let airbnb_account = &mut ctx.accounts.zcube_account;
+        let zcube_account = &mut ctx.accounts.zcube_account;
 
         // Mark todo
-        airbnb_account.location = location;
-        airbnb_account.country = country;
-        airbnb_account.price = price;
-        airbnb_account.image = img;
+        zcube_account.location = location;
+        zcube_account.country = country;
+        zcube_account.price = price;
+        zcube_account.image = img;
         Ok(())
     }
 
-    pub fn remove_airbnb(ctx: Context<RemoveAirbnb>, _airbnb_idx: u8) -> Result<()> {
+    pub fn remove_zcube(ctx: Context<RemovezCube>, _zcube_idx: u8) -> Result<()> {
         // Decreate total airbnb count
         let user_profile = &mut ctx.accounts.user_profile;
         user_profile.zcube_count = user_profile.zcube_count
@@ -139,7 +139,7 @@ pub struct InitializeUser<'info> {
 
 #[derive(Accounts)]
 #[instruction()]
-pub struct AddAirbnb<'info> {
+pub struct Addzcube<'info> {
     #[account(
         mut,
         seeds = [USER_TAG, authority.key().as_ref()],
@@ -155,7 +155,7 @@ pub struct AddAirbnb<'info> {
         payer = authority,
         space = 2865 + 8,
     )]
-    pub airbnb_account: Box<Account<'info, AirbnbAccount>>,
+    pub zcube_account: Box<Account<'info, AirbnbAccount>>,
 
     #[account(mut)]
     pub authority: Signer<'info>,
