@@ -1,7 +1,13 @@
 # zCube
 RWA Marketplace for Booking All Kinds of Accomodation in SOLANA
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+## This Logic can be used in all existing hotel booking application as a plugin to facilitate payments on chain instead of using other API and paying 1% Transaction Fee
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 # Systerm Design
+
 ## Admin View
 
 <img width="1186" alt="admin-view" src="https://github.com/bigudao/zCube/assets/66848339/2dd7b182-e4b9-4825-9d83-77677d37cd88">
@@ -37,7 +43,6 @@ RWA Marketplace for Booking All Kinds of Accomodation in SOLANA
 
 Overall, this code define a Solana program for managing user profiles, zcube listings, and bookings on the blockchain. The Anchor framework is used to simplify the development of Solana programs by providing higher-level abstractions.
 
-## This Logic can be used in all existing hotel booking application as a plugin to facilitate payments on chain instead of using other API and paying 1% Transaction Fee 
 
 
 # Target Timelines
