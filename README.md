@@ -21,21 +21,29 @@ RWA Marketplace for Booking All Kinds of Accomodation in SOLANA
 
 3. **Program Definition** (`bigu_zcube`):
    - This is the main program definition using the `#[program]` attribute.
-   - It contains several public functions (`initialize_user`, `add_airbnb`, `update_airbnb`, `remove_airbnb`, `book_zcube`, and `cancel_booking`) representing actions that can be performed on the blockchain.
+   - It contains several public functions (`initialize_user`, `add_zcube`, `update_zcube`, `remove_zcube`, `book_zcube`, and `cancel_booking`) representing actions that can be performed on the blockchain.
 
 4. **Structs and Traits**:
-   - `InitializeUser`, `AddAirbnb`, `Updatezcube`, `RemovezCube`, `BookzCube`, `CancelBook`: These are account structs representing different types of accounts involved in the program. Each struct is decorated with the `#[derive(Accounts)]` attribute, which is used by Anchor to generate necessary implementations.
+   - `InitializeUser`, `Addzcube`, `Updatezcube`, `RemovezCube`, `BookzCube`, `CancelBook`: These are account structs representing different types of accounts involved in the program. Each struct is decorated with the `#[derive(Accounts)]` attribute, which is used by Anchor to generate necessary implementations.
    - Each struct contains fields representing accounts involved in the corresponding operation. These accounts include user profiles, Airbnb accounts, booking accounts, authority signers, and the system program.
 
 5. **Function Implementation**:
    - Each function in the program corresponds to an action that can be performed on the blockchain.
-   - For example, `initialize_user` initializes a user profile with default data, `add_airbnb` adds a new Airbnb listing, `update_airbnb` updates an existing Airbnb listing, `remove_airbnb` removes an Airbnb listing, `book_zcube` books a zCube (whatever that may represent), and `cancel_booking` cancels a booking.
+   - For example, `initialize_user` initializes a user profile with default data, `add_zcube` adds a new Airbnb listing, `update_zcube` updates an existing Airbnb listing, `remove_zcube` removes an Airbnb listing, `book_zcube` books a zCube (whatever that may represent), and `cancel_booking` cancels a booking.
 
 6. **Instructions**:
-   - The `#[instruction]` attribute on the account structs specifies additional data that needs to be passed along with the transaction. For example, `AddAirbnb` expects a `zcube_idx` parameter.
+   - The `#[instruction]` attribute on the account structs specifies additional data that needs to be passed along with the transaction. For example, `Addzcube` expects a `zcube_idx` parameter.
    - These instructions help in providing additional context or parameters required for executing the transaction correctly.
 
-Overall, this code seems to define a Solana program for managing user profiles, Airbnb listings, and bookings on the blockchain. The Anchor framework is used to simplify the development of Solana programs by providing higher-level abstractions.
+Overall, this code define a Solana program for managing user profiles, zcube listings, and bookings on the blockchain. The Anchor framework is used to simplify the development of Solana programs by providing higher-level abstractions.
+
+## This Logic can be used in all existing hotel booking application as a plugin to facilitate payments on chain instead of using other API and paying 1% Transaction Fee 
+
+
+# Target Timelines
+## Test-Net & Dev-Net Q2 2024
+## Beta Testing Q2-Q3 2024
+## Main-Net Q4 2024
 
 
 
